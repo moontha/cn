@@ -1,0 +1,33 @@
+<!-- <div *ngFor="let item of weekdata | async">
+    <div>{{ item.key }}</div>
+    <div *ngFor="let i of item.orderlist">
+        {{ i.code }}
+    </div>
+</div> -->
+
+<div class="ui styled accordion mr10 mt10 ml10">
+    <ng-container *ngFor="let item of weekdata | async; index as i">
+        <div [ngClass]="{ active: i === openedItemIndex }" class="title" (click)="setActive(i)">
+            <i class="dropdown icon"></i>
+            {{ item.key }}
+        </div>
+        <div [ngClass]="{ active: i === openedItemIndex }" class="content active">
+            <table class="ui unstackable table">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th class="right aligned">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of item.orderlist">
+                        <td>{{ i.code }}</td>
+                        <td>{{ i.name }}</td>
+                        <td class="right aligned">{{ i.amount }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+</div>

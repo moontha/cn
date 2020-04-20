@@ -1,0 +1,47 @@
+<!-- <div class="content mt10 ml10 mr10">
+    <div *ngFor="let o of atWork$ | async">
+        <p> {{ o.key }} </p>
+    </div>
+</div> -->
+
+<!-- <div *ngFor="let o of workplaces | keyvalue">
+    <button class="ui positive basic button">{{ o.key }}</button>
+
+    <div *ngFor="let obj of workplaces[o.key] | keyvalue">
+        <p> {{ workplaces[o.key][obj.key].username }}</p>
+
+    </div>
+
+</div> -->
+
+<div class="content mt10 ml10 mr10">
+    <div *ngFor="let o of atWork$ | async | keyvalue">
+        <div class="mt10">{{ o.key }}</div>
+        <div *ngFor="let obj of o.value | keyvalue">
+            <table class="ui compact celled definition table">
+                <thead class="full-width">
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h4 class="ui image header">
+                                <img [src]="o.value[obj.key].photoURL " class="ui mini rounded image">
+                                <div class="content">
+                                    {{ o.value[obj.key].username }}
+                                    <div class="sub header">{{ o.value[obj.key].role }}
+                                    </div>
+                                </div>
+                            </h4>
+                        </td>
+                        <td>
+                            <label>start : {{ o.value[obj.key].starttime.toDate() | date: 'dd MMM HH:mm' }} </label>
+                            <label *ngIf="!o.value[obj.key].start; else notyet">end :
+                                {{ o.value[obj.key].endtime.toDate() | date: 'dd MMM HH:mm' }}</label>
+                            <ng-template #notyet><label>status: working</label></ng-template>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 

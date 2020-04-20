@@ -1,0 +1,38 @@
+
+<div class="mt10 ml10 mr10">
+    ลงเวลา Online
+</div>
+
+<div class="mt10 ml10 mr10">
+    <div class="ui input mr10">
+        <input type="text" id="place" placeholder="ทำงานที่" [(ngModel)]="place">
+    </div>
+    <button class="ui primary button" (click)="startWork()">ลงเวลาเข้างาน</button>
+</div>
+
+<div class="ui horizontal divider">ข้อมูลการลงเวลาของท่าน</div>
+
+<div id="uinfo" class="mt10 ml10 mr10">
+    <div *ngFor="let o of workuser | async">
+        <table class="ui compact celled definition table">
+            <thead class="full-width">
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ o.key }} : {{ o.starttime?.toDate() | date: 'dd MMM HH:mm' }}
+                    </td>
+                    <td>
+                        <div *ngIf="o.start; else finish">
+                            <button class="ui olive button" (click)="finishWork(o.key, o.userid)">ออกงาน</button>
+                            <div hidden #flag>{{ o?.start }}</div>
+                        </div>
+                        <ng-template #finish>
+                            <button class="ui negative basic button">{{ o.endtime?.toDate() | date: 'dd MMM HH:mm' }}</button>
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

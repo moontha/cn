@@ -1,0 +1,35 @@
+  
+<div *ngIf="!!user">
+  <div class="container">
+    <div class="ui secondary pointing menu">
+      <a class="item" routerLink="info" routerLinkActive="active"><i class="home icon"></i></a>
+      <a class="item" routerLink="time" routerLinkActive="active">Time</a>
+      <a class="item" routerLink="cut" routerLinkActive="active">Cut</a>
+      <a class="item" routerLink="order" routerLinkActive="active">Order</a>
+      <div class="right menu">
+        <img class="ui mini rounded image m5" [src]="user.photoURL" (click)="askLogout()">
+      </div>
+    </div>
+  </div>
+</div>
+<ng-container class="ui segment">
+  <router-outlet></router-outlet>
+</ng-container>
+
+<div *ngIf="logOutModal">
+  <div class="ui dimmer visible active">
+    <div class="ui modal visible active">
+      <i class="close icon" (click)="noLogout()"></i>
+      <div class="header">
+        Log out
+      </div>
+      <div class="content">
+        ยืนยัน Log out
+      </div>
+      <div class="actions">
+        <button class="ui red basic button" (click)="logout()">Log out</button>
+      </div>
+    </div>
+  </div>
+</div> 
+

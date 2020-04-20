@@ -1,0 +1,55 @@
+@import 'semantic-ui-css/semantic.css';
+
+body {
+    font-family: 'Kanit', sans-serif !important;
+  }
+  
+  .ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+  }
+  
+  .ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
+  }
+
+  .m5 {
+    margin: 5px;
+  }
+  
+  .mt5 {
+    margin-top: 5px;
+  }
+  
+  .mt10 {
+    margin-top: 10px;
+  }
+  
+  .mr10 {
+    margin-right: 10px;
+  }
+  
+  .ml10 {
+    margin-left: 10px;
+  }
+  
+  .ml50 {
+    margin-left: 50px;
+  }
+  .h40 {
+    height: 40px;
+    background-color: lightgray;
+  }
+  .aright {
+    text-align: right;
+  }
+  
+  .aleft {
+    text-align: left;
+  }
+  
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+  

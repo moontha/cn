@@ -1,0 +1,108 @@
+<div class="mt10 ml10 mr10">
+  <div>
+    สั่งของ : ระบุสาขา
+  </div>
+  <div class="ui input mr10">
+    <input type="text" id="place" placeholder="สาขา" [(ngModel)]="place">
+  </div>
+  <button class="ui primary button" (click)="loadType()">OK</button>
+
+</div>
+
+<div *ngIf="flagTerm" class="mt10 ml10 mr10">
+  <div>ระบุสินค้า</div>
+  <div class="ui input mr10">
+    <input type="text" id="product" placeholder="สินค้า" [(ngModel)]="term">
+  </div>
+  <button class="ui yellow button" (click)="showLastOrder()"><i class="dropdown icon"></i>Order</button>
+</div>
+
+
+
+<table *ngIf="term.length > 0" class="ui celled striped table">
+  <thead>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products | async | filter:term" (click)="enList(p)">
+      <!-- <td class="collapsing">{{ p.key }}</td>
+        <td class="collapsing">{{ p.name }}</td> -->
+      <td>{{ p.name }} : {{ p.code }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="ml10 mr10" *ngIf="selectedProduct.length > 0">
+  <div class="ui horizontal divider">สั่งสินค้า</div>
+  <table class="ui very basic table unstackable">
+    <thead>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of selectedProduct; index as i" (click)="deleteFromList(i, p)">
+        <td>{{ p.code }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.amount }}</td>
+      </tr>
+      <tr>
+        <td><button class="ui primary button" (click)="askConfirmCut()">Save</button> </td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="inputAmoutModal">
+  <div class="ui dimmer visible active">
+    <div class="ui modal visible active">
+      <div class="header">
+        {{ currentProduct.code}} : {{ currentProduct.name}}
+      </div>
+      <div class="content">
+        <div class="ui input">
+          <input type="number" placeholder="จำนวน" [(ngModel)]="amount">
+        </div>
+      </div>
+      <div class="actions">
+        <button class="ui button" (click)="getInputAmount()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="deleteFromListModal">
+  <div class="ui dimmer visible active">
+    <div class="ui modal visible active">
+      <i class="close icon" (click)="noDelete()"></i>
+      <div class="header">
+        {{ currentProduct.code}} : {{ currentProduct.name}}
+      </div>
+      <div class="content">
+        ยืนยัน ลบ
+      </div>
+      <div class="actions">
+        <button class="ui primary button" (click)="deleteProductFromList()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="confirmSaveDbModal">
+  <div class="ui dimmer visible active">
+    <div class="ui modal visible active">
+      <i class="close icon" (click)="noSave()"></i>
+      <div class="header">
+        Save Data
+      </div>
+      <div class="content">
+        ยืนยัน บันทึกข้อมูล
+      </div>
+      <div class="actions">
+        <button class="ui primary button" (click)="saveOrder()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="lastOrder">
+  <app-lastorder [place]="place"></app-lastorder>
+</div>

@@ -1,0 +1,17 @@
+
+<div class="content mt10 ml10 mr10">
+    <div *ngFor="let o of orders$ | async | keyvalue">
+        <table class="ui very basic table unstackable">
+            <thead class="full-width">
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ o.key }}</td>
+                    <td><button class="ui red button" (click)="deleteOrder(o.key, o)">Delete</button>
+                    </td>
+                    <td><button class="ui primary button" (click)="printOrder(o)">Print</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
