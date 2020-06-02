@@ -7,6 +7,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Injectable({
   providedIn: 'root'
 })
+
 export class PrintpdfService {
 
   constructor(
