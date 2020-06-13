@@ -13,16 +13,7 @@ import { ViewsModule } from './views/views.module';
 import { Utility } from './models/util.model';
 import { HomeComponent } from './views/home/home.component';
 
-const config = {
-  apiKey: "AIzaSyD4_y3wy_uYaO1Gu8ZCbI34DqAdCDgSw4I",
-  authDomain: "cninterplus.firebaseapp.com",
-  databaseURL: "https://cninterplus.firebaseio.com",
-  projectId: "cninterplus",
-  storageBucket: "cninterplus.appspot.com",
-  messagingSenderId: "376833680063",
-  appId: "1:376833680063:web:bf737e47f0537bbc761c0a",
-  measurementId: "G-1Z5K0L99NR"
-}
+
 
 @NgModule({
   declarations: [
